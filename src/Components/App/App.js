@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import "./App.css";
+import HeaderForm from '../Header/Header'
+
+
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { apiResponse: "" };
+        this.state = { stateIncidents: "" };
     }
 
     callAPI() {
         fetch("https://raw.githubusercontent.com/2020PB/police-brutality/data_build/all-locations.json")
             .then(res => res.json())
-            .then(res => this.setState({ apiResponse: this.organizeByState(res.data) }))
+            .then(res => this.setState({ stateIncidents: this.organizeByState(res.data) }))
             .catch(err => err);
     }
 
@@ -29,11 +32,13 @@ class App extends Component {
       return stateIncidents;
     }
 
+
+
     render() {
 
        console.log(this.state)
        // <ul>
-       //  { (this.state.apiResponse.data) ? this.state.apiResponse.data.map(
+       //  { (this.state.stateIncidents.data) ? this.state.stateIncidents.data.map(
          //    (data, index) =>
          //    <li key={index}> {data.state} </li>
          //
@@ -43,10 +48,9 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-
-                    <h1 className="App-title">Incident Reports</h1>
-                </header>
+              <HeaderForm
+              stateIncidents={this.state.stateIncidents}
+              />
 
 
             </div>
