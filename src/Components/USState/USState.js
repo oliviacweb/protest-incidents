@@ -34,24 +34,21 @@ class USState extends Component {
              </Link>
 
               {this.state.cities.map(city =>
-                <Link to={{
+                {
+                  let incidents = this.state.stateIncidents.filter(
+                  stateIncident => stateIncident.city === city
+                )
+                return <Link to={{
                   pathname: `/city-selected`,
                   state: {
                     stateName: this.state.stateName,
                     cityName: city,
-                    incidents: this.state.stateIncidents.filter(
-                      stateIncident => stateIncident.city === city
-                    )
+                    incidents
                   }
-                }}><button>{city}</button></Link>
+                }}><button>{city}: {incidents.length}</button></Link>
+              }
               )}
 
-              <Route exact path="/city-selected" component={CityIncidents}>
-
-              </Route>
-              <Route exact path="/all-cities" component={AllCities}>
-
-              </Route>
             </div>
             </div>
 
@@ -59,4 +56,10 @@ class USState extends Component {
     }
 }
 
+// <Route exact path="/city-selected" component={CityIncidents}>
+//
+// </Route>
+// <Route exact path="/all-cities" component={AllCities}>
+//
+// </Route>
 export default USState;

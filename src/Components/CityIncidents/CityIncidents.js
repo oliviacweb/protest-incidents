@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./USState.css";
+import "./CityIncidents.css";
 import { Link, Route } from "react-router-dom";
 
 
 
 
-class USState extends Component {
+class CityIncidents extends Component {
     constructor(props) {
         super(props);
       this.state = Object.assign({}, this.props.location.state);
@@ -19,7 +19,11 @@ class USState extends Component {
 
         return (
            <div>
-           <h3>Stories</h3>
+           <h2>Stories</h2>
+           {this.state.incidents.map(incident =>
+            <div className='incident-card'><h3>{incident.name}</h3>
+            </div> )
+           }
 
             </div>
 
@@ -27,4 +31,4 @@ class USState extends Component {
     }
 }
 
-export default;
+export default CityIncidents;

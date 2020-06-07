@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import HeaderForm from '../HeaderForm/HeaderForm'
+import { Route } from "react-router-dom";
+import CityIncidents from '../CityIncidents/CityIncidents';
+
 
 
 
@@ -43,6 +46,11 @@ class App extends Component {
               <HeaderForm
               stateIncidents={this.state.stateIncidents}
               />
+              <Route exact path="/city-selected" component={CityIncidents}>
+
+              </Route>
+        
+
             </div>
 
         );
