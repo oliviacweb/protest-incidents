@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
-import SelectUSState from 'react-select-us-states';
+import SelectUSState from '../../Libraries/usStateSelector/index.js';
 import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 // import { withRouter } from "react-router-dom";
