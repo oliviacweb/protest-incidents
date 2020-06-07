@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import HeaderForm from '../Header/Header'
+import { Route, Router } from "react-router-dom";
 
 
 
@@ -48,9 +49,21 @@ class App extends Component {
 
         return (
             <div className="App">
-              <HeaderForm
-              stateIncidents={this.state.stateIncidents}
-              />
+
+            <Route
+            exact
+            path="/"
+            render={() => <HeaderForm
+            stateIncidents={this.state.stateIncidents}
+            />}
+            />
+
+
+
+
+
+
+
 
 
             </div>
