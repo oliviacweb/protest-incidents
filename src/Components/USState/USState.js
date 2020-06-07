@@ -23,6 +23,16 @@ class USState extends Component {
            <div>
            <h3>Cities</h3>
             <div className="USState">
+             <Link to={{
+               pathname: `/all-cities`,
+               state: {
+                 stateName: this.state.stateName,
+                 incidents: this.state.stateIncidents
+               }
+             }}>
+             <button className='all-cities'>All Cities</button>
+             </Link>
+
               {this.state.cities.map(city =>
                 <Link to={{
                   pathname: `/city-selected`,
@@ -35,6 +45,13 @@ class USState extends Component {
                   }
                 }}><button>{city}</button></Link>
               )}
+
+              <Route exact path="/city-selected" component={CityIncidents}>
+
+              </Route>
+              <Route exact path="/all-cities" component={AllCities}>
+
+              </Route>
             </div>
             </div>
 

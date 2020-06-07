@@ -1,0 +1,9 @@
+
+.USState {
+  display: flex;
+  flex-wrap: wrap;
+}
+.USState button {
+  margin: 1%;
+  flex-wrap: wrap;
+}
