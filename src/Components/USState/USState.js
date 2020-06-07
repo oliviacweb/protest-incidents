@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./USState.css";
+import { Link, Route } from "react-router-dom";
 
 
 
@@ -7,22 +8,36 @@ import "./USState.css";
 class USState extends Component {
     constructor(props) {
         super(props);
-        this.state = { stateName: "" };
+      this.state = Object.assign({}, this.props.location.state);
+      this.state.cities = [...new Set(this.state.stateIncidents.map(
+        incident => incident.city
+      ))].sort()
     }
-    componentDidMount() {
-      // const {handle} = this.props.match.params;
-      console.log(this.props.match.params)
-    }
+
 
     render() {
 
-       
-     
+
+
         return (
+           <div>
+           <h3>Cities</h3>
             <div className="USState">
-              <h3>STATE</h3>
+              {this.state.cities.map(city =>
+                <Link to={{
+                  pathname: `/city-selected`,
+                  state: {
+                    stateName: this.state.stateName,
+                    cityName: city,
+                    incidents: this.state.stateIncidents.filter(
+                      stateIncident => stateIncident.city === city
+                    )
+                  }
+                }}><button>{city}</button></Link>
+              )}
             </div>
-           
+            </div>
+
         );
     }
 }

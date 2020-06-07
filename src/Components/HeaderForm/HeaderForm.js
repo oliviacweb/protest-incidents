@@ -11,7 +11,7 @@ class HeaderForm extends Component {
     super();
     this.state = {
       stateName: '',
-      cityName: '',
+      stateIncidents: [],
     };
     this.setNewValue = this.setNewValue.bind(this);
   }
@@ -27,7 +27,9 @@ class HeaderForm extends Component {
 
   setNewValue(newValue) {
     console.log('this is the State code: ' + newValue);
-    this.setState({ stateName: newValue })
+    this.setState({ stateName: newValue,
+                    stateIncidents: this.props.stateIncidents[newValue]
+     })
   }
 
   render() {
@@ -39,9 +41,10 @@ class HeaderForm extends Component {
             Select a state: <SelectUSState id="myId" className="myClassName" onChange={this.setNewValue} />
           </p>
           <Link id="stateButton" to={{
-            pathname: `/state-selected/${this.state.stateName}`
+            pathname: `/state-selected`,
+            state: this.state
           }} >Go</Link>
-          <Route exact path="/state-selected/:stateName" component={USState}>
+          <Route exact path="/state-selected" component={USState}>
 
           </Route>
         </header>
