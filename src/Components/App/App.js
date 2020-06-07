@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import HeaderForm from '../Header/Header'
-import { Route, Router } from "react-router-dom";
+import HeaderForm from '../HeaderForm/HeaderForm'
 
 
 
@@ -38,35 +37,14 @@ class App extends Component {
     render() {
 
        console.log(this.state)
-       // <ul>
-       //  { (this.state.stateIncidents.data) ? this.state.stateIncidents.data.map(
-         //    (data, index) =>
-         //    <li key={index}> {data.state} </li>
-         //
-         //  )
-         //  : 0 }
-         // </ul>
 
         return (
             <div className="App">
-
-            <Route
-            exact
-            path="/"
-            render={() => <HeaderForm
-            stateIncidents={this.state.stateIncidents}
-            />}
-            />
-
-
-
-
-
-
-
-
-
+              <HeaderForm
+              stateIncidents={this.state.stateIncidents}
+              />
             </div>
+
         );
     }
 }
