@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import HeaderForm from '../Header/Header'
+import HeaderForm from '../HeaderForm/HeaderForm'
+import { Route } from "react-router-dom";
+import CityIncidents from '../CityIncidents/CityIncidents';
+
 
 
 
@@ -37,23 +40,19 @@ class App extends Component {
     render() {
 
        console.log(this.state)
-       // <ul>
-       //  { (this.state.stateIncidents.data) ? this.state.stateIncidents.data.map(
-         //    (data, index) =>
-         //    <li key={index}> {data.state} </li>
-         //
-         //  )
-         //  : 0 }
-         // </ul>
 
         return (
             <div className="App">
               <HeaderForm
               stateIncidents={this.state.stateIncidents}
               />
+              <Route exact path="/city-selected" component={CityIncidents}>
 
+              </Route>
+        
 
             </div>
+
         );
     }
 }
