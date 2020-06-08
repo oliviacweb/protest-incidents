@@ -42,9 +42,15 @@ class HeaderForm extends Component {
           </p>
           <Link id="stateButton" to={{
             pathname: `/state-selected`,
-            state: this.state
+
           }} >Go</Link>
-          <Route exact path="/state-selected" component={USState}>
+          <Route exact path="/state-selected"
+          component={() =>
+            <USState
+            stateName={this.state.stateName} stateIncidents={this.state.stateIncidents}
+            />
+          }>
+
 
           </Route>
         </header>

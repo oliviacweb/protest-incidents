@@ -8,18 +8,25 @@ import { Link, Route } from "react-router-dom";
 class USState extends Component {
     constructor(props) {
         super(props);
-      this.state = Object.assign({}, this.props.location.state);
-      this.state.cities = [...new Set(this.state.stateIncidents.map(
+      this.state = Object.assign({}, this.props);
+      this.state.cities = this.state.stateIncidents ? [...new Set(this.state.stateIncidents.map(
         incident => incident.city
-      ))].sort()
+      ))].sort() : [];
+    }
+
+    noCities() {
+      if(this.state.stateName && this.state.stateName !== '---') {
+        return <p>No incidents reported in {this.state.stateName}.</p>
+      }
+      return null
     }
 
 
     render() {
 
-
-
         return (
+          (this.state.cities.length === 0) ?
+          this.noCities() :
            <div>
            <h3>Cities</h3>
             <div className="USState">
