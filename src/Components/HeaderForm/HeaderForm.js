@@ -12,6 +12,8 @@ class HeaderForm extends Component {
     this.state = {
       stateName: '',
       stateIncidents: [],
+      buttonStatus: 'disabled',
+      appInitial: true
     };
     this.setNewValue = this.setNewValue.bind(this);
   }
@@ -30,6 +32,9 @@ class HeaderForm extends Component {
     this.setState({ stateName: newValue,
                     stateIncidents: this.props.stateIncidents[newValue]
      })
+     if(newValue !== '---') {
+         this.setState({ buttonStatus: 'enabled' })
+     }
   }
 
   render() {
@@ -43,7 +48,14 @@ class HeaderForm extends Component {
           <Link id="stateButton" to={{
             pathname: `/state-selected`,
 
-          }} >Go</Link>
+          }} >{this.state.buttonStatus !== 'disabled' && this.state.appInitial ?
+          <button
+          id='start-button'
+          className='go-button'
+          onClick={() => {this.setState({ appInitial: false })}}
+          >Go
+          </button> : null}
+          </Link>
           <Route exact path="/state-selected"
           component={() =>
             <USState

@@ -14,7 +14,7 @@ class CityIncidents extends Component {
 
 
     render() {
-      debugger
+    
 
 
 
