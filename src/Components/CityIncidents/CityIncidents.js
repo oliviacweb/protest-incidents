@@ -21,7 +21,8 @@ class CityIncidents extends Component {
            <div>
            <h2>Stories</h2>
            {this.state.incidents.map(incident =>
-            <div className='incident-card'><h3>{incident.name}</h3>
+            <div className='incident-card'><h2>{incident.date}</h2><h3>{incident.name}</h3>
+            {incident.links.map(link => <li><a href={link}>Click for more infos</a></li>)}
             </div> )
            }
 

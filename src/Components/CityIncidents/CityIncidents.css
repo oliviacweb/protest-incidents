@@ -1,9 +1,6 @@
-
-.USState {
-  display: flex;
-  flex-wrap: wrap;
-}
-.USState button {
+.incident-card {
+  border: 2px solid black;
   margin: 1%;
-  flex-wrap: wrap;
+  padding: 1%;
+  width: 40%;
 }
