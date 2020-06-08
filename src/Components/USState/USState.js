@@ -30,7 +30,7 @@ class USState extends Component {
            <div>
            <h3>Cities</h3>
             <div className="USState">
-             <Link to={{
+             <Link key='all' to={{
                pathname: `/all-cities`,
                state: {
                  stateName: this.state.stateName,
@@ -45,7 +45,7 @@ class USState extends Component {
                   let incidents = this.state.stateIncidents.filter(
                   stateIncident => stateIncident.city === city
                 )
-                return <Link to={{
+                return <Link key={city} to={{
                   pathname: `/city-selected`,
                   state: {
                     stateName: this.state.stateName,
