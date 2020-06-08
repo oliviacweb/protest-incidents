@@ -66,15 +66,7 @@ class HeaderForm extends Component {
 
           </Route>
         </header>
-        {/* <Switch>
-          <Route path="/city-selected">
-            "city"
-          </Route>
-
-          <Route path="/">
-            "home"
-          </Route>
-        </Switch> */}
+  
       </section>
     );
   }
