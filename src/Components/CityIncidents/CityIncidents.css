@@ -4,7 +4,12 @@
   padding: 1%;
   width: 40%;
 }
+.star {
+  color: black;
+  font-size: 2em;
+  cursor: pointer;
+}
+
 .saved {
   color: red;
-  font-size: 2em;
 }
