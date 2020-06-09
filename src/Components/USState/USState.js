@@ -34,7 +34,9 @@ class USState extends Component {
                pathname: `/all-cities`,
                state: {
                  stateName: this.state.stateName,
-                 incidents: this.state.stateIncidents
+                 incidents: this.state.stateIncidents,
+                 savedStories: this.state.savedStories
+
                }
              }}>
              <button className='all-cities'>All Cities</button>
@@ -50,7 +52,8 @@ class USState extends Component {
                   state: {
                     stateName: this.state.stateName,
                     cityName: city,
-                    incidents
+                    incidents,
+                    savedStories: this.state.savedStories
                   }
                 }}><button>{city}: {incidents.length}</button></Link>
               }

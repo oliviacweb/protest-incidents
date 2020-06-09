@@ -4,3 +4,7 @@
   padding: 1%;
   width: 40%;
 }
+.saved {
+  color: red;
+  font-size: 2em;
+}

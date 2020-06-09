@@ -10,7 +10,10 @@ import CityIncidents from '../CityIncidents/CityIncidents';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { stateIncidents: "" };
+        this.state = {
+          stateIncidents: "",
+          // savedStories: []
+       };
     }
 
     callAPI() {
@@ -35,7 +38,8 @@ class App extends Component {
       return stateIncidents;
     }
 
-
+    // stateIncidents={this.state.stateIncidents}
+    // savedStories={this.state.savedStories}
 
     render() {
 
@@ -49,7 +53,7 @@ class App extends Component {
               <Route exact path="/city-selected" component={CityIncidents}>
 
               </Route>
-        
+
 
             </div>
 

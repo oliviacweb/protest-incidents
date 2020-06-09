@@ -12,6 +12,7 @@ class HeaderForm extends Component {
     this.state = {
       stateName: '',
       stateIncidents: [],
+      savedStories: {},
       buttonStatus: 'disabled',
       appInitial: true
     };
@@ -60,13 +61,14 @@ class HeaderForm extends Component {
           component={() =>
             <USState
             stateName={this.state.stateName} stateIncidents={this.state.stateIncidents}
+            savedStories={this.state.savedStories}
             />
           }>
 
 
           </Route>
         </header>
-  
+
       </section>
     );
   }
