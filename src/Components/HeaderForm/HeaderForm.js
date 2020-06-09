@@ -14,7 +14,8 @@ class HeaderForm extends Component {
       stateIncidents: [],
       savedStories: {},
       buttonStatus: 'disabled',
-      appInitial: true
+      appInitial: true,
+      // showSaved: false
     };
     this.setNewValue = this.setNewValue.bind(this);
   }
@@ -28,6 +29,10 @@ class HeaderForm extends Component {
 
   };
 
+  // toggleShowSaved = () => {
+  //   this.setState({showSaved: !this.state.showSaved})
+  // }
+
   setNewValue(newValue) {
     console.log('this is the State code: ' + newValue);
     this.setState({ stateName: newValue,
@@ -37,7 +42,7 @@ class HeaderForm extends Component {
          this.setState({ buttonStatus: 'enabled' })
      }
   }
-
+// showSaved={this.state.showSaved}
   render() {
     return (
       <section className="header-section">
@@ -46,6 +51,7 @@ class HeaderForm extends Component {
           <p>
             Select a state: <SelectUSState id="myId" className="myClassName" onChange={this.setNewValue} />
           </p>
+
           <Link id="stateButton" to={{
             pathname: `/state-selected`,
 
@@ -60,8 +66,10 @@ class HeaderForm extends Component {
           <Route exact path="/state-selected"
           component={() =>
             <USState
-            stateName={this.state.stateName} stateIncidents={this.state.stateIncidents}
+            stateName={this.state.stateName}
+            stateIncidents={this.state.stateIncidents}
             savedStories={this.state.savedStories}
+
             />
           }>
 
