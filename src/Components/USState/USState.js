@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./USState.css";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -31,11 +31,13 @@ class USState extends Component {
            <h3>Cities</h3>
             <div className="USState">
              <Link key='all' to={{
-               pathname: `/all-cities`,
+               pathname: `/city-selected`,
                state: {
                  stateName: this.state.stateName,
+                 cityName: 'all',
                  incidents: this.state.stateIncidents,
-                 savedStories: this.state.savedStories
+                 savedStories: this.state.savedStories,
+
 
                }
              }}>
