@@ -34,22 +34,26 @@ class HeaderForm extends Component {
   // }
 
   setNewValue(newValue) {
-    console.log('this is the State code: ' + newValue);
     this.setState({ stateName: newValue,
                     stateIncidents: this.props.stateIncidents[newValue]
      })
      if(newValue !== '---') {
          this.setState({ buttonStatus: 'enabled' })
      }
+     console.log('newww', newValue)
+     console.log('uuhhgdg', this.props.stateIncidents[newValue])
   }
 // showSaved={this.state.showSaved}
   render() {
+    console.log('is this?', this.state.stateIncidents)
     return (
       <section className="header-section">
         <header className="App-header">
           <h1 className="App-title">Incident Reports</h1>
           <p>
-            Select a state: <SelectUSState id="myId" className="myClassName" onChange={this.setNewValue} />
+          <label for="us-state-select">
+            Select a state: <SelectUSState id="us-state-select" className="state-select" onChange={this.setNewValue} />
+          </label>
           </p>
 
           <Link id="stateButton" to={{
@@ -58,6 +62,7 @@ class HeaderForm extends Component {
           }} >{this.state.buttonStatus !== 'disabled' && this.state.appInitial ?
           <button
           id='start-button'
+          title='go-button'
           className='go-button'
           onClick={() => {this.setState({ appInitial: false })}}
           >Go
@@ -69,14 +74,10 @@ class HeaderForm extends Component {
             stateName={this.state.stateName}
             stateIncidents={this.state.stateIncidents}
             savedStories={this.state.savedStories}
-
             />
           }>
-
-
           </Route>
         </header>
-
       </section>
     );
   }

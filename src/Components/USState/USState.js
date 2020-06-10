@@ -9,6 +9,8 @@ class USState extends Component {
     constructor(props) {
         super(props);
       this.state = Object.assign({}, this.props);
+      console.log('incidents', this.state.stateIncidents)
+
       this.state.cities = this.state.stateIncidents ? [...new Set(this.state.stateIncidents.map(
         incident => incident.city
       ))].sort() : [];
@@ -16,18 +18,20 @@ class USState extends Component {
 
     noCities() {
       if(this.state.stateName && this.state.stateName !== '---') {
-        return <p>No incidents reported in {this.state.stateName}.</p>
+        return <div><h2>{this.state.stateName}</h2><p>No incidents reported in {this.state.stateName}.</p></div>
       }
       return null
     }
 
 
     render() {
+      console.log('citiesss', this.state.cities)
 
         return (
           (this.state.cities.length === 0) ?
           this.noCities() :
            <div>
+           <h2>{this.state.stateName}</h2>
            <h3>Cities</h3>
             <div className="USState">
              <Link key='all' to={{
@@ -41,7 +45,7 @@ class USState extends Component {
 
                }
              }}>
-             <button className='all-cities'>All Cities</button>
+             <button title='all-cities' className='all-cities'>All Cities</button>
              </Link>
 
               {this.state.cities.map(city =>
@@ -57,7 +61,7 @@ class USState extends Component {
                     incidents,
                     savedStories: this.state.savedStories
                   }
-                }}><button>{city}: {incidents.length}</button></Link>
+                }}><button title='city-button'>{city}: {incidents.length}</button></Link>
               }
               )}
 

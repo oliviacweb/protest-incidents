@@ -9,12 +9,10 @@ class CityIncidents extends Component {
     constructor(props) {
         super(props);
       this.state = Object.assign({}, this.props.location.state);
+      console.log('uhhhhhhhhdgdgfff', this.props.location.state)
       this.toggleSave = this.toggleSave.bind(this);
       this.toggleShowSaved = this.toggleShowSaved.bind(this);
       this.showSaved = false;
-
-      //this in bind is actually object of city incident
-
     }
 
     isSaved(id) {
@@ -49,6 +47,7 @@ class CityIncidents extends Component {
 
 
     render() {
+      console.log('delly', this.state)
       const shownCards = this.state.incidents.map(incident => {
            return !this.showSaved || this.isSaved(incident.id) ?
          this.displayIncident(incident) :
@@ -63,8 +62,6 @@ class CityIncidents extends Component {
            }</button>
            <button onClick={() => {this.props.history.goBack()}}>Go Back</button>
             {shownCards.length ? shownCards : <p>No saved stories</p>}
-
-
             </div>
 
         );

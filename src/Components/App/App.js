@@ -3,7 +3,8 @@ import "./App.css";
 import HeaderForm from '../HeaderForm/HeaderForm'
 import { Route } from "react-router-dom";
 import CityIncidents from '../CityIncidents/CityIncidents';
-
+import { fetchData } from "../../ApiCalls.js";
+console.log(fetchData())
 
 
 
@@ -11,20 +12,14 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          stateIncidents: "",
-          // savedStories: []
+          stateIncidents: ""
        };
     }
 
-    callAPI() {
-        fetch("https://raw.githubusercontent.com/2020PB/police-brutality/data_build/all-locations.json")
-            .then(res => res.json())
-            .then(res => this.setState({ stateIncidents: this.organizeByState(res.data) }))
-            .catch(err => err);
-    }
 
     componentDidMount() {
-        this.callAPI();
+          fetchData()
+          .then(res => this.setState({ stateIncidents: this.organizeByState(res.data)}))
     }
 
     organizeByState(incidents) {
@@ -42,8 +37,7 @@ class App extends Component {
     // savedStories={this.state.savedStories}
 
     render() {
-
-       console.log(this.state)
+         console.log('arkansaaaas', this.state.stateIncidents)
 
         return (
             <div className="App">
@@ -51,10 +45,7 @@ class App extends Component {
               stateIncidents={this.state.stateIncidents}
               />
               <Route exact path="/city-selected" component={CityIncidents}>
-
               </Route>
-
-
             </div>
 
         );
