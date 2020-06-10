@@ -1,8 +1,18 @@
+.story-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .incident-card {
   border: 2px solid black;
   margin: 1%;
   padding: 1%;
   width: 40%;
+}
+
+.back {
+  height: 2em;
 }
 .star {
   color: black;
@@ -12,4 +22,8 @@
 
 .saved {
   color: red;
+}
+.show-saved {
+  margin: 1%;
+  height: 2em;
 }

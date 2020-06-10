@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./HeaderForm.css";
 import SelectUSState from '../../Libraries/usStateSelector/index.js';
-// import PropTypes from "prop-types";
 import USState from "../USState/USState"
 
 import { Link, Route } from "react-router-dom"
@@ -15,7 +14,6 @@ class HeaderForm extends Component {
       savedStories: {},
       buttonStatus: 'disabled',
       appInitial: true,
-      // showSaved: false
     };
     this.setNewValue = this.setNewValue.bind(this);
   }
@@ -29,9 +27,6 @@ class HeaderForm extends Component {
 
   };
 
-  // toggleShowSaved = () => {
-  //   this.setState({showSaved: !this.state.showSaved})
-  // }
 
   setNewValue(newValue) {
     this.setState({ stateName: newValue,
@@ -40,14 +35,10 @@ class HeaderForm extends Component {
      if(newValue !== '---') {
          this.setState({ buttonStatus: 'enabled' })
      }
-     console.log('newww', newValue)
-     console.log('uuhhgdg', this.props.stateIncidents[newValue])
   }
-// showSaved={this.state.showSaved}
-  render() {
-    console.log('is this?', this.state.stateIncidents)
-    return (
 
+  render() {
+    return (
       <section className="header-section">
         <header className="App-header">
           <h1 className="App-title">Incidents of Police Brutality Against Protesters</h1>

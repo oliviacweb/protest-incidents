@@ -39,11 +39,11 @@ class CityIncidents extends Component {
     <h3>{incident.name}</h3>
     {incident.links.map((link, index2) => <li key={index2}><a href={link}>Click for more info</a></li>)}
     </div>
+
   }
 
 
     render() {
-      console.log('delly', this.state)
       const shownCards = this.state.incidents.map(incident => {
            return !this.showSaved || this.isSaved(incident.id) ?
          this.displayIncident(incident) :
@@ -53,13 +53,16 @@ class CityIncidents extends Component {
         return (
            <div>
            <h2>Stories</h2>
+           <div className="button-container">
            <button onClick={this.toggleShowSaved} className='show-saved'>{
              this.showSaved ? 'Show All Stories' : 'Show Saved Stories'
            }</button>
-           <button onClick={() => {this.props.history.goBack()}}>Go Back</button>
+           <button className='back' onClick={() => {this.props.history.goBack()}}>Go Back</button>
+           <div className='story-container'>
             {shownCards.length ? shownCards : <p>No saved stories</p>}
             </div>
-
+            </div>
+            </div>
         );
     }
 }
