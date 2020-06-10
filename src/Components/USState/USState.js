@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "./USState.css";
 import { Link } from "react-router-dom";
 
-
-
-
 class USState extends Component {
     constructor(props) {
         super(props);
@@ -41,8 +38,6 @@ class USState extends Component {
                  cityName: 'all',
                  incidents: this.state.stateIncidents,
                  savedStories: this.state.savedStories,
-
-
                }
              }}>
              <button title='all-cities' className='all-cities'>All Cities</button>
@@ -72,10 +67,4 @@ class USState extends Component {
     }
 }
 
-// <Route exact path="/city-selected" component={CityIncidents}>
-//
-// </Route>
-// <Route exact path="/all-cities" component={AllCities}>
-//
-// </Route>
 export default USState;
