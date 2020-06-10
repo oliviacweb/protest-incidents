@@ -2,14 +2,10 @@ import React, { Component } from "react";
 import "./CityIncidents.css";
 
 
-
-
-
 class CityIncidents extends Component {
     constructor(props) {
         super(props);
       this.state = Object.assign({}, this.props.location.state);
-      console.log('uhhhhhhhhdgdgfff', this.props.location.state)
       this.toggleSave = this.toggleSave.bind(this);
       this.toggleShowSaved = this.toggleShowSaved.bind(this);
       this.showSaved = false;

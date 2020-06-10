@@ -47,9 +47,10 @@ class HeaderForm extends Component {
   render() {
     console.log('is this?', this.state.stateIncidents)
     return (
+
       <section className="header-section">
         <header className="App-header">
-          <h1 className="App-title">Incident Reports</h1>
+          <h1 className="App-title">Incidents of Police Brutality Against Protesters</h1>
           <p>
           <label for="us-state-select">
             Select a state: <SelectUSState id="us-state-select" className="state-select" onChange={this.setNewValue} />

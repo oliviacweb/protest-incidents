@@ -35,7 +35,7 @@ describe("App", () => {
         <App />
       </BrowserRouter>
     );
-    expect(getByText("Incident Reports")).toBeInTheDocument();
+    expect(getByText("Incidents of Police Brutality Against Protesters")).toBeInTheDocument();
   });
 
   it("Should render the drop down", () => {
@@ -67,12 +67,68 @@ it("Should display city buttons after clicking go", async () => {
     </MemoryRouter>
   );
   fireEvent.change(getByLabelText("Select a state:"), {
+    target: { value: "Colorado" },
+  });
+  const goButton = await waitFor(() => getByTitle("go-button"));
+  fireEvent.click(goButton);
+  const cityHeader = await waitFor(() => getByText('No incidents reported in Colorado.'));
+  expect(cityHeader).toBeInTheDocument();
+});
+
+it("Should display city buttons after clicking go", async () => {
+  const { getByText, getByPlaceholderTexts, getAllByTitle, getByTitle, getByLabelText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+  fireEvent.change(getByLabelText("Select a state:"), {
     target: { value: "Arkansas" },
   });
   const goButton = await waitFor(() => getByTitle("go-button"));
   fireEvent.click(goButton);
-  const cityHeader = await waitFor(() => getByText("No incidents reported in Arkansas."));
-  expect(cityHeader).toBeInTheDocument();
+  const cityButton = await waitFor(() => getByText('Bentonville: 1'));
+  expect(cityButton).toBeInTheDocument();
+});
+
+
+it("Should display city stories", async () => {
+  const { getByText, getByPlaceholderTexts, getAllByTitle, getByTitle, getByLabelText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+  fireEvent.change(getByLabelText("Select a state:"), {
+    target: { value: "Arkansas" },
+  });
+  const goButton = await waitFor(() => getByTitle("go-button"));
+  fireEvent.click(goButton);
+  const cityButton = await waitFor(() => getByText('Bentonville: 1'));
+  fireEvent.click(cityButton);
+  const storyHeader = await waitFor(() => getByText('Stories'));
+  expect(storyHeader).toBeInTheDocument();
+});
+
+it("Should display saved stories", async () => {
+  const { getByText, getByPlaceholderTexts, getAllByTitle, getByTitle, getByLabelText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+  fireEvent.change(getByLabelText("Select a state:"), {
+    target: { value: "Arkansas" },
+  });
+  const goButton = await waitFor(() => getByTitle("go-button"));
+  fireEvent.click(goButton);
+  const cityButton = await waitFor(() => getByText('Bentonville: 1'));
+  fireEvent.click(cityButton);
+  const storyHeader = await waitFor(() => getByText('Stories'));
+  const saveStoryButton = await waitFor(() => getByText('&#10034;'));
+  fireEvent.click(saveStoryButton);
+  const viewSavedStories = await waitFor(() => getByText('Show Saved Stories'));
+  fireEvent.click(viewSavedStories
+  const savedStoryCard = await waitFor(() => getByText('Law enforcement gas a crowd chanting “we want peace” right after exiting the building.'))
+  expect(savedStoryCard).toBeInTheDocument();
+
 });
 
 

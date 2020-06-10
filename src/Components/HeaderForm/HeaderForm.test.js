@@ -12,7 +12,7 @@ describe("HeaderForm", () => {
       />
       </BrowserRouter>
     );
-    expect(getByText("Incident Reports")).toBeInTheDocument();
+    expect(getByText("Incidents of Police Brutality Against Protesters")).toBeInTheDocument();
     expect(getByText("Select a state:")).toBeInTheDocument();
   });
 });
